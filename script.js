@@ -8,9 +8,13 @@ var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-var numbersOptions = [1,2,3,4,5,6,7,8,9]
+var numbersOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 var special = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", ']', "^", '_', "`", "{", "|", "}", "~"];
+
+
+
+
 
 function generatePassword() {
   var length = prompt("How long would you like your password to be?");
@@ -33,19 +37,20 @@ function generatePassword() {
 
 
 
+
   // WHEN asked for character types to include in the password
   // THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters (DONE)
 
   // WHEN I answer each prompt
   // THEN my input should be validated and at least one character type should be selected (DONE)
 
-  var uppercaseChoice = confirm("Would you like to use upper cased letters?");
+  var uppercaseChoice = confirm("Press OK if you would you like to use upper cased letters.");
 
-  var lowercaseChoice = confirm("Would you like to use lower cased letters?");
+  var lowercaseChoice = confirm("Press OK if you would you like to use lower cased letters.");
 
-  var numbers = confirm("Would you like to use numbers?");
+  var numbers = confirm("Press OK if you would you like to use numbers.");
 
-  var specialChoice = confirm("Would you like to use special characters?");
+  var specialChoice = confirm("Press OK if you would you like to use special characters.");
 
   if(!uppercaseChoice || !lowercaseChoice || !numbers || !specialChoice) {
     return null;
@@ -54,12 +59,16 @@ function generatePassword() {
   // if statement 
   if (uppercaseChoice === false && lowercaseChoice === false && numbers === false && specialChoice === false) {
     alert('Must choose a criteria.')
-  } else if (
-    (uppercase === true) ||
-    (lowercaseChoice === true) ||
-    (numbers === true) ||
-    (specialChoice === true)
-  ) 
+    return null;
+   } // else if ( 
+  //   (uppercase === true) ||
+  //   (lowercaseChoice === true) ||
+  //   (numbers === true) ||
+  //   (specialChoice === true)
+  // ) 
+  // {}
+
+return null;
 }
 
 
@@ -69,6 +78,12 @@ function generatePassword() {
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+
+  password += Math.floor(Math.random() * uppercase.length);
+  password += Math.floor(Math.random() * lowercase.length);
+  password += Math.floor(Math.random() * numbersOptions.length);
+  password += Math.floor(Math.random() * special.length);
+
 
   passwordText.value = password;
 
