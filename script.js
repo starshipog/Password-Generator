@@ -5,7 +5,7 @@
 
 var generateBtn = document.querySelector("#generate");
 
-var criteraInputs = {
+var criteriaInputs = {
   uppercase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
 
   lowercase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
@@ -25,7 +25,7 @@ function generatePassword() {
   if(!length) {
     return null;
   }
-   if(length != numbersOptions)
+  if (length != criteriaInputs.numbersOptions)
   // does pw meet critera?
   if (length < 8) {
     alert('Password must be between 8 and 128 characters.')
@@ -36,7 +36,6 @@ function generatePassword() {
     alert('Password must be between 8 and 128 characters.')
     return null
   }
-
 
 
 
@@ -80,13 +79,13 @@ function generatePassword() {
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  console.log(password);
+  // console.log(password);
   var passwordText = document.querySelector("#password");
 
-  // password += Math.floor(Math.random() * uppercase.length);
-  // password += Math.floor(Math.random() * lowercase.length);
-  // password += Math.floor(Math.random() * numbersOptions.length);
-  // password += Math.floor(Math.random() * special.length);
+   password = Math.floor(Math.random() * criteriaInputs.uppercase.length);
+   password = Math.floor(Math.random() * criteriaInputs.lowercase.length);
+   password = Math.floor(Math.random() * criteriaInputs.numbersOptions.length);
+   password = Math.floor(Math.random() * criteriaInputs.special.length);
 
 
   passwordText.value = password;
